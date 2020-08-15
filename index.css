@@ -1,0 +1,23 @@
+body {
+    font-family: sans-serif;
+    background-color: antiquewhite;
+  }
+  
+  #app {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+    font-size: 60px;
+  }
+  
+  .divProps {
+    background-color: aqua;
+    flex-grow: 1;
+    width: 29%;
+    height: 100px;
+    margin: 10px;
+  }
+  

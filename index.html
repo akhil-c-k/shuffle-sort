@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="./index.css"></link>
+    <script type="text/javascript">
+     var testArr = [1, 2, 3, 4, 5, 6, 7, 8, 9]; 
+     //color passing as array
+      var splashColor = ["#6F98A8","#2b8ead","#2e444d","#2b8ead","#2f454e","#bfbfbf","#bfbfbf","#6f98a8","#2f454e"]
+      var arrayLength = testArr.length;
+      var result = [];
+      
+      //initialy show element 
+      function showDiv() 
+        {
+        var cardContainer = document.getElementById("app");
+           for (var i = 0; i < arrayLength; i++) {
+             result.push(testArr[i]);
+             var div = document.createElement("div");
+             div.innerHTML = testArr[i];
+             div.classList.add("divProps");
+             cardContainer.appendChild(div);
+           }
+        var x = document.getElementById("app").querySelectorAll(".divProps"); 
+           for(i=0;i<x.length;i++)
+             {
+              for(j=0;j<splashColor.length;j++)
+               {
+              x[j].style.backgroundColor = splashColor[j]
+               }
+          
+             }
+        }
+        //using for initial load
+        function playDiv()
+          { 
+            showDiv();
+            document.getElementById('play').disabled = true
+          } 
+
+      // shuffle element  
+      function shuffleDiv(passArray)
+       {
+         var node= document.getElementById("app");
+         node.querySelectorAll('*').forEach(n => n.remove());
+         var passArrayLength = passArray.length, temp, index;
+        
+         while (passArrayLength > 0)
+           {
+             index = Math.floor(Math.random() * passArrayLength);
+             passArrayLength--;
+             temp = passArray[passArrayLength];
+             passArray[passArrayLength] = passArray[index];
+             passArray[index] = temp;
+             testArr = passArray 
+          }
+         showDiv();
+        return passArray;
+      }
+     
+     function sortDiv(testArr)
+       {
+           var node= document.getElementById("app");
+           node.querySelectorAll('*').forEach(n => n.remove());
+          testArr.sort()
+          showDiv()
+       }
+   </script>
+</head>
+<body>
+    <div id="app"></div>
+    <button id = "play" onClick="playDiv()">
+      Lets Play
+    </button>
+    <button onClick="shuffleDiv(result)">
+       shuffle
+    </button>
+    <button onClick="sortDiv(result)">
+       sort
+    </button>
+</body>
+</html>
